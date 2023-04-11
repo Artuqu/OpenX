@@ -18,7 +18,7 @@ public class Users {
     private String email;
     private String username;
     private String password;
-    private List<Name> names;
+    private Name name;
 
     private String phone;
     private int _v;

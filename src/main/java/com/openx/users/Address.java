@@ -1,6 +1,7 @@
 package com.openx.users;
 
 import lombok.*;
+import java.util.List;
 
 @Getter
 @Setter
