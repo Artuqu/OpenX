@@ -7,8 +7,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FakeStore {
@@ -25,12 +23,9 @@ public class FakeStore {
         objectMapper.registerModule(new JavaTimeModule());
         BufferedWriter data = new BufferedWriter(new FileWriter(output));
 
-
         List<Object> objects = objectMapper.readValue(new URL(path),  o.getClass());
         data.write(objects.toString());
         data.close();
-
-
     }
 
 

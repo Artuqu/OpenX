@@ -1,0 +1,1 @@
+{electronics=1994.99, women's clothing=157.72, men's clothing=204.23, jewelery=883.98}

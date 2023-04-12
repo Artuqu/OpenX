@@ -2,14 +2,14 @@ package com.openx.products;
 
 import lombok.*;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Products {
+public class Products extends ArrayList<Products> {
 
     private int id;
     private String title;
