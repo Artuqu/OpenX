@@ -7,7 +7,6 @@ import com.openx.FakeStore;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,7 +26,7 @@ public class ProductsApp extends FakeStore {
 
     }
 
-    public static void retrieveValueOfCategory(String productsPath, String productsValueOfCategory) throws IOException {
+    public static String retrieveValueOfCategory(String productsPath, String productsValueOfCategory) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
 //          solve invalid definition for LocalTime
@@ -53,6 +52,7 @@ public class ProductsApp extends FakeStore {
         data.close();
 
 
+        return String.valueOf(categories);
     }
 
 
