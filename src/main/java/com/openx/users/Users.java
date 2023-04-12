@@ -12,14 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 public class Users {
 
-    private List<Address> addresses;
-
+    private Address address;
     private int id;
     private String email;
     private String username;
     private String password;
     private Name name;
-
     private String phone;
     private int _v;
 

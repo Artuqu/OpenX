@@ -1,7 +1,6 @@
 package com.openx.users;
 
 import lombok.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -10,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Address {
 
-    private List<Geolocation> geolocations;
+    private Geolocation geolocation;
     private String city;
     private String street;
     private int number;
