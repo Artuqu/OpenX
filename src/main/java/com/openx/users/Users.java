@@ -3,14 +3,14 @@ package com.openx.users;
 
 import lombok.*;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+@ToString
+public class Users extends ArrayList<Object> {
 
     private Address address;
     private int id;
@@ -19,7 +19,7 @@ public class Users {
     private String password;
     private Name name;
     private String phone;
-    private int _v;
+    private int __v;
 
 
 }
