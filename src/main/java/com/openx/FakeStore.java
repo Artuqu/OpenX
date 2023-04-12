@@ -19,11 +19,6 @@ public class FakeStore {
 
     public static void main(String[] args) throws IOException {
 
-
-        String cartsPath = "https://fakestoreapi.com/carts";
-        String cartsOutput = "src/main/resources/outputs/cart.txt";
-
-
     }
 
     public static void retrieveData(String path, String output, Object o) throws IOException {
