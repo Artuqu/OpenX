@@ -9,7 +9,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class ProductsApp extends FakeStore {
         String productsPath = "https://fakestoreapi.com/products";
         String productsOutput = "src/main/resources/outputs/products.json";
         String productsValueOfCategory = "src/main/resources/outputs/categoryValue.txt";
+
         retrieveData(productsPath, productsOutput, List.of(Products.class));
 
         retrieveValueOfCategory(productsPath, productsValueOfCategory);

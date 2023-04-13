@@ -16,16 +16,18 @@ public class FakeStore {
 
     }
 
-    public static void retrieveData(String path, String output, List<Object> o) throws IOException {
+    public static List<Object> retrieveData(String path, String output, List<Object> o) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
 //          solve invalid definition for LocalTime
         objectMapper.registerModule(new JavaTimeModule());
         BufferedWriter data = new BufferedWriter(new FileWriter(output));
 
-        List<Object> objects = objectMapper.readValue(new URL(path),  o.getClass());
+
+        List<Object> objects = objectMapper.readValue(new URL(path), o.getClass());
         data.write(objects.toString());
         data.close();
+        return objects;
     }
 
 
