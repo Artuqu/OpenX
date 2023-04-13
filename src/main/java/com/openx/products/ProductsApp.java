@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -33,14 +34,13 @@ public class ProductsApp extends FakeStore {
         objectMapper.registerModule(new JavaTimeModule());
         BufferedWriter data = new BufferedWriter(new FileWriter(productsValueOfCategory));
 
-
         ArrayList<Products> productsList = objectMapper.readValue(new URL(productsPath), Products.class);
         HashMap<String, Double> categories = new HashMap<>();
         for (int i = 0; i < productsList.size(); i++) {
             String category = productsList.get(i).getCategory();
             Double price = productsList.get(i).getPrice();
             if (categories.containsKey(category)) {
-                Double newPrice = categories.get(category) + price;
+                double newPrice = categories.get(category) + price;
                 categories.put(category, (double) Math.round(newPrice * 100) / 100);
             } else {
                 categories.put(category, (double) Math.round(price * 100) / 100);

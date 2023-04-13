@@ -2,7 +2,7 @@ package com.openx.carts;
 
 import lombok.*;
 
-import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -10,10 +10,11 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Carts {
+public class Carts extends ArrayList<Carts> {
     private int id;
     private int userId;
-    private LocalTime date;
+    private String date;
     private List<Products> products;
+    private int __v;
 
 }

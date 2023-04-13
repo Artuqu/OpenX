@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Users extends ArrayList<Object> {
+public class Users extends ArrayList<Users> {
 
     private Address address;
     private int id;
