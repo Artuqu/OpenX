@@ -1,7 +1,6 @@
 package com.openx.products;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.openx.FakeStore;
 
 import java.io.BufferedWriter;
@@ -29,9 +28,6 @@ public class ProductsApp extends FakeStore {
 
     public static String retrieveValueOfCategory(String productsPath, String productsValueOfCategory) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-
-//          solve invalid definition for LocalTime
-        objectMapper.registerModule(new JavaTimeModule());
         BufferedWriter data = new BufferedWriter(new FileWriter(productsValueOfCategory));
 
         ArrayList<Products> productsList = objectMapper.readValue(new URL(productsPath), Products.class);
