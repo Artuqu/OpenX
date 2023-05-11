@@ -17,7 +17,9 @@ class CartsAppTest {
         String cartsPath = "https://fakestoreapi.com/carts";
         String productsPath = "https://fakestoreapi.com/products";
         String usersPath = "https://fakestoreapi.com/users";
-        String result = CartsApp.findHighestValueCart(cartsPath, productsPath, usersPath);
+        String output = "src/main/resources/outputs/highestCart.txt";
+
+        String result = CartsApp.findHighestValueCart(cartsPath, productsPath, usersPath, output);
         assertEquals("Max cart value has don romer with 2015.0 value.", result);
     }
 }

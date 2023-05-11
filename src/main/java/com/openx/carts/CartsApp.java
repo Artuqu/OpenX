@@ -20,17 +20,15 @@ public class CartsApp extends FakeStore {
         String cartsOutput = "src/main/resources/outputs/cart.json";
         String productsPath = "https://fakestoreapi.com/products";
         String usersPath = "https://fakestoreapi.com/users";
+        String output = "src/main/resources/outputs/highestCart.txt";
 
         retrieveData(cartsPath, cartsOutput, List.of(Carts.class));
 
-        findHighestValueCart(cartsPath, productsPath, usersPath);
+        findHighestValueCart(cartsPath, productsPath, usersPath, output);
     }
 
-    public static String findHighestValueCart(String cartsPath, String productsPath, String usersPath) throws IOException {
+    public static String findHighestValueCart(String cartsPath, String productsPath, String usersPath, String output) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-//          solve invalid definition for LocalTime
-//        objectMapper.registerModule(new JavaTimeModule());
-        String output = "src/main/resources/outputs/highestCart.txt";
         BufferedWriter data = new BufferedWriter(new FileWriter(output));
 
         ArrayList<Carts> cartsList = objectMapper.readValue(new URL(cartsPath), Carts.class);
@@ -41,12 +39,21 @@ public class CartsApp extends FakeStore {
 
         for (int i = 0; i < cartsList.size(); i++) {
             double fullPrice = 0;
-            for (int j = 0; j < cartsList.get(i).getProducts().size(); j++) {
-                int id = cartsList.get(i).getProducts().get(j).getProductId();
-                int quantity = cartsList.get(i).getProducts().get(j).getQuantity();
-                fullPrice += productsList.get(id).getPrice() * quantity;
-                if (j == cartsList.get(i).getProducts().size() - 1) {
-                    maxCartList.put(cartsList.get(i).getUserId(), fullPrice);
+            int productsSize = cartsList.get(i).getProducts().size();
+            for (int j = 0; j < productsSize; j++) {
+                com.openx.carts.Products products = cartsList.get(i).getProducts().get(j);
+                int productId = products.getProductId();
+                int quantity = products.getQuantity();
+                fullPrice += productsList.get(productId - 1).getPrice() * quantity;
+
+
+                if (j == productsSize - 1) {
+                    int getUserId = cartsList.get(i).getUserId();
+                    if (maxCartList.get(getUserId) != null) {
+                        maxCartList.replace(getUserId, maxCartList.get(getUserId) + fullPrice);
+                    } else {
+                        maxCartList.put(getUserId, fullPrice);
+                    }
                     fullPrice = 0;
                 }
             }
