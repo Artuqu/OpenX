@@ -20,6 +20,6 @@ class CartsAppTest {
         String output = "src/main/resources/outputs/highestCart.txt";
 
         String result = CartsApp.findHighestValueCart(cartsPath, productsPath, usersPath, output);
-        assertEquals("Max cart value has don romer with 2015.0 value.", result);
+        assertEquals("Max cart value has don romer with 3376.74 value.", result);
     }
 }

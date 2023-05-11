@@ -33,8 +33,9 @@ public class ProductsApp extends FakeStore {
         ArrayList<Products> productsList = objectMapper.readValue(new URL(productsPath), Products.class);
         HashMap<String, Double> categories = new HashMap<>();
         for (int i = 0; i < productsList.size(); i++) {
-            String category = productsList.get(i).getCategory();
-            Double price = productsList.get(i).getPrice();
+            Products products = productsList.get(i);
+            String category = products.getCategory();
+            Double price = products.getPrice();
             if (categories.containsKey(category)) {
                 double newPrice = categories.get(category) + price;
                 categories.put(category, (double) Math.round(newPrice * 100) / 100);
@@ -43,10 +44,8 @@ public class ProductsApp extends FakeStore {
             }
         }
 
-
         data.write(String.valueOf(categories));
         data.close();
-
 
         return String.valueOf(categories);
     }
