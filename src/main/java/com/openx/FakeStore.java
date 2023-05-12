@@ -25,5 +25,13 @@ public class FakeStore {
         return objects;
     }
 
+    public static Result getObjectMapperAndDataOutput(String productsValueOfCategory) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        BufferedWriter data = new BufferedWriter(new FileWriter(productsValueOfCategory));
+        Result result = new Result(objectMapper, data);
+        return result;
+    }
 
+    public record Result(ObjectMapper objectMapper, BufferedWriter data) {
+    }
 }
