@@ -15,11 +15,11 @@ public class FakeStore {
 
     }
 
-    public static List<Object> retrieveData(String path, String output, List<Object> o) throws IOException {
+    public static List<?> retrieveData(String path, String output, List<?> o) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         BufferedWriter data = new BufferedWriter(new FileWriter(output));
 
-        List<Object> objects = objectMapper.readValue(new URL(path), o.getClass());
+        List<?> objects = objectMapper.readValue(new URL(path), o.getClass());
         data.write(objects.toString());
         data.close();
         return objects;

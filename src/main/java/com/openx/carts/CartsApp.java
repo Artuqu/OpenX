@@ -30,23 +30,23 @@ public class CartsApp extends FakeStore {
         ArrayList<Products> productsList = resultMapper.objectMapper().readValue(new URL(productsPath), Products.class);
         ArrayList<Users> usersList = resultMapper.objectMapper().readValue(new URL(usersPath), Users.class);
 
-        HashMap<Integer, Double> maxCartList = new HashMap<>();
+        HashMap<Integer, Float> maxCartList = new HashMap<>();
 
         for (int i = 0; i < cartsList.size(); i++) {
-            double fullPrice = 0;
+            float fullPrice = 0;
             int productsSize = cartsList.get(i).getProducts().size();
             for (int j = 0; j < productsSize; j++) {
                 com.openx.carts.Products getProduct = cartsList.get(i).getProducts().get(j);
                 int productId = getProduct.getProductId();
                 int quantity = getProduct.getQuantity();
-                fullPrice += productsList.get(productId - 1).getPrice() * quantity;
+                fullPrice += (float) (productsList.get(productId - 1).getPrice() * quantity);
 
                 if (j == productsSize - 1) {
                     int getUserId = cartsList.get(i).getUserId();
                     if (maxCartList.get(getUserId) != null) {
-                        maxCartList.replace(getUserId, maxCartList.get(getUserId) + fullPrice);
+                        maxCartList.replace(getUserId,  (maxCartList.get(getUserId) + fullPrice));
                     } else {
-                        maxCartList.put(getUserId, fullPrice);
+                        maxCartList.put(getUserId,  fullPrice);
                     }
                     fullPrice = 0;
                 }

@@ -20,7 +20,7 @@ public class SpecialBinaryTree {
         this.right = null;
     }
 
-    static int counter = 0;
+    static int counter;
 
     public static SpecialBinaryTree buildTree(int valueToAdd, SpecialBinaryTree currentNode) {
         if (currentNode == null) {
@@ -30,15 +30,12 @@ public class SpecialBinaryTree {
             }
             return new SpecialBinaryTree(valueToAdd);
         }
-        if (valueToAdd >= currentNode.value || valueToAdd == 0) {
-            currentNode.right = buildTree(valueToAdd, currentNode.right);
-        }
-       else if (valueToAdd == firstNode) {
+        if (valueToAdd > currentNode.value || valueToAdd == 0) {
             currentNode.right = buildTree(valueToAdd, currentNode.right);
         } else if (valueToAdd < currentNode.value) {
             currentNode.left = buildTree(valueToAdd, currentNode.left);
-        } else {
-            return currentNode;
+        } else if (valueToAdd == firstNode) {
+            currentNode.right = buildTree(valueToAdd, currentNode.right);
         }
         return currentNode;
     }
